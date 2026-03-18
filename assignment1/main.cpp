@@ -85,9 +85,23 @@ struct Course {
 //
 // @param filename 要解析的文件名。
 // @param courses  要填充的课程向量。
-void parse_csv(std::string filename, std::vector<Course> courses) {
+void parse_csv(std::string filename, std::vector<Course> &courses) {
   /* (STUDENT TODO) Your code goes here... */
   // (学生待办) 你的代码写在这里...
+  std::ifstream files(filename);
+  if(files.is_open()) {
+    std::string linestr;
+    int flag = 0;
+    while(std::getline(files,linestr)) {
+      if(!flag) {
+        flag ++;
+        continue;
+      }
+      auto tokens_for_line = split(linestr,',');
+      courses.push_back({tokens_for_line[0],tokens_for_line[1],tokens_for_line[2]});
+    } 
+  }
+  files.close();
 }
 
 /**
@@ -123,7 +137,7 @@ void parse_csv(std::string filename, std::vector<Course> courses) {
 //
 // @param all_courses 通过调用 `parse_csv` 获得的所有课程的向量。
 //                    此向量将通过删除所有开设课程而被修改。
-void write_courses_offered(std::vector<Course> all_courses) {
+void write_courses_offered(std::vector<Course> &all_courses) {
   /* (STUDENT TODO) Your code goes here... */
   // (学生待办) 你的代码写在这里...
 }
@@ -150,7 +164,7 @@ void write_courses_offered(std::vector<Course> all_courses) {
 // 提示：此函数应与 `write_courses_offered` 非常相似。
 //
 // @param unlisted_courses 未开设课程的向量。
-void write_courses_not_offered(std::vector<Course> unlisted_courses) {
+void write_courses_not_offered(std::vector<Course> &unlisted_courses) {
   /* (STUDENT TODO) Your code goes here... */
   // (学生待办) 你的代码写在这里...
 }
