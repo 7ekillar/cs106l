@@ -36,9 +36,9 @@ const std::string COURSES_NOT_OFFERED_PATH = "student_output/courses_not_offered
 // 你必须填充此结构体中字段的类型。
 // 提示：记住 C++ 流可以处理哪些类型？！
 struct Course {
-  /* STUDENT TODO */ title;
-  /* STUDENT TODO */ number_of_units;
-  /* STUDENT TODO */ quarter;
+  /* STUDENT TODO */ std::string title;
+  /* STUDENT TODO */ int number_of_units;
+  /* STUDENT TODO */ std::string quarter;
 };
 
 /**
