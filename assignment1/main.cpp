@@ -37,7 +37,7 @@ const std::string COURSES_NOT_OFFERED_PATH = "student_output/courses_not_offered
 // 提示：记住 C++ 流可以处理哪些类型？！
 struct Course {
   /* STUDENT TODO */ std::string title;
-  /* STUDENT TODO */ int number_of_units;
+  /* STUDENT TODO */ std::string number_of_units;
   /* STUDENT TODO */ std::string quarter;
 };
 
@@ -165,7 +165,7 @@ int main() {
 
   /* Uncomment for debugging... */
   // 取消注释以进行调试...
-  // print_courses(courses);
+  print_courses(courses);
 
   write_courses_offered(courses);
   write_courses_not_offered(courses);
