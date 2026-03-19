@@ -140,6 +140,29 @@ void parse_csv(std::string filename, std::vector<Course> &courses) {
 void write_courses_offered(std::vector<Course> &all_courses) {
   /* (STUDENT TODO) Your code goes here... */
   // (学生待办) 你的代码写在这里...
+
+  //写入CSV列标题和所有开设课程
+  std::ofstream offeredf {COURSES_OFFERED_PATH};
+  if(offeredf.is_open()) {
+    offeredf << "Title,Number of Units,Quarter\n";
+    for(const auto &course : all_courses) {
+      if(course.quarter != "null") {
+        offeredf << course.title << "," << course.number_of_units << "," << course.quarter << "\n";
+      }
+    }
+  }
+  offeredf.close();
+  
+  //从 `all_courses` 向量中删除开设的课程。
+  int lines = all_courses.size();
+  while (lines > 0 ) {
+    if(all_courses[lines-1].quarter != "null") {
+      delete_elem_from_vector(all_courses,all_courses[lines-1]);
+    }
+
+    lines -= 1;
+  }
+  
 }
 
 /**
