@@ -190,6 +190,13 @@ void write_courses_offered(std::vector<Course> &all_courses) {
 void write_courses_not_offered(std::vector<Course> &unlisted_courses) {
   /* (STUDENT TODO) Your code goes here... */
   // (学生待办) 你的代码写在这里...
+  std::ofstream not_offeredf {COURSES_NOT_OFFERED_PATH};
+  if(not_offeredf.is_open()) {
+    not_offeredf << "Title,Number of Units,Quarter\n";
+    for(const auto &course : unlisted_courses) {
+      not_offeredf << course.title << "," << course.number_of_units << "," << course.quarter << "\n";
+    }
+  }
 }
 
 int main() {
@@ -202,7 +209,7 @@ int main() {
 
   /* Uncomment for debugging... */
   // 取消注释以进行调试...
-  print_courses(courses);
+  // print_courses(courses);
 
   write_courses_offered(courses);
   write_courses_not_offered(courses);
